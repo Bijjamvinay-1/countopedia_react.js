@@ -9,6 +9,8 @@ export default class Counter extends React.Component {
     this.handledefend = this.handledefend.bind(this);
     this.state={
       count:0,
+      gameStatus: "",
+      LastPlay: "",
     }
   }
 
@@ -18,6 +20,8 @@ export default class Counter extends React.Component {
       let newCount = previousState.count + Math.round(Math.random()* 10);
       return{
         count: newCount,
+        LastPlay:"attack",
+        gameStatus: newCount > 10 ? "you Won!":previousState.gameStatus,
       }
     })
   }
@@ -28,6 +32,8 @@ export default class Counter extends React.Component {
       let newCount = previousState.count - Math.round(Math.random()* 10);
             return{
         count: newCount,
+        LastPlay:"defend",
+        gameStatus: newCount < -10 ? "you Lost!":previousState.gameStatus,
       }
     })
   }
@@ -44,6 +50,8 @@ export default class Counter extends React.Component {
     this.setState(() => {
       return {
         count: 0,
+        gameStatus:"",
+        LastPlay:"",
       };
     });
   };
@@ -52,7 +60,8 @@ export default class Counter extends React.Component {
         <div className="row text-white text-center">
           <h1>Game Score :{this.state.count}</h1>
           <p>You will win at +10 and lose at -10 points!</p>
-          <p>Lets Play: </p>
+          <p>Lets Play:{this.state.LastPlay} </p>
+          <h3>Game Status : {this.state.gameStatus}</h3>
           <div className="col-6 col-md-3 offset-md-3">
           <img
           style={{
@@ -63,7 +72,7 @@ export default class Counter extends React.Component {
           className="p-4 rounded" src={attack} onClick={this.handleAttack}/>
           </div>
 
-          <div className="col-6 col-md-3 offset-md-3">
+          <div className="col-6 col-md-3 ">
           <img
           style={{
             width: "100%",
