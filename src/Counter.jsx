@@ -3,6 +3,7 @@ import React from "react";
 export default class Counter extends React.Component {
   constructor(props){
     super(props);
+    this.handleAttack = this.handleAttack.bind(this);
     this.state={
       count:0,
     }
@@ -10,6 +11,7 @@ export default class Counter extends React.Component {
 
   handleAttack(){
     alert("Attack clicked")
+    this.setState({count:2})
   }
 
   defendAttack(){
