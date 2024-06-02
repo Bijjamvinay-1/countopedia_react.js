@@ -12,12 +12,20 @@ export default class Counter extends React.Component {
 
   handleAttack(){
     alert("Attack clicked")
-    this.setState({count:this.state.count +1});
+    this.setState((previousState) =>{
+      return{
+        count: previousState.count +1,
+      }
+    })
   }
 
   defendAttack(){
     alert("Defend clicked")
-    this.setState({count:this.state.count -1});
+    this.setState((previousState) =>{
+      return{
+        count: previousState.count -1,
+      }
+    })
   }
   render() {
     return(
