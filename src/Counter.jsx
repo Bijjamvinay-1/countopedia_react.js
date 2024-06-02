@@ -4,6 +4,7 @@ export default class Counter extends React.Component {
   constructor(props){
     super(props);
     this.handleAttack = this.handleAttack.bind(this);
+    this.defendAttack = this.defendAttack.bind(this);
     this.state={
       count:0,
     }
@@ -11,11 +12,12 @@ export default class Counter extends React.Component {
 
   handleAttack(){
     alert("Attack clicked")
-    this.setState({count:2})
+    this.setState({count:this.state.count +1});
   }
 
   defendAttack(){
     alert("Defend clicked")
+    this.setState({count:this.state.count -1});
   }
   render() {
     return(
